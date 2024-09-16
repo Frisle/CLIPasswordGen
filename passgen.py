@@ -4,7 +4,6 @@ import help
 
 
 def main():
-	dropbox.update_password()
 	print("Get strong passwords quickly and store them offline!")
 	while True:
 		user_input = input("Input task: ").lower().strip()

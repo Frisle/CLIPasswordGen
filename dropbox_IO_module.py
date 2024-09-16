@@ -19,10 +19,6 @@ dbx = dropbox.Dropbox(
 path = os.getcwd()
 
 
-for entry in dbx.files_list_folder("/passwords").entries:
-    print(entry.server_modified)
-
-
 def update_password():
     try:
         for entry in dbx.files_list_folder('/passwords').entries:

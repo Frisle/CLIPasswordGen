@@ -65,6 +65,5 @@ def update_dict(data, file_name):
     
     with open(file_name, "w") as json_file:
         json.dump(file_data, json_file, ensure_ascii=False, indent=4)
-    dropbox_upload.upload_password()
 
 
