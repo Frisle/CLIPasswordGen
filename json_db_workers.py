@@ -1,6 +1,7 @@
 import json
 import dropbox_IO_module as dropbox_upload
 
+
 def create_pass_json(json_db, initial_structure):
     with open(json_db, "w", encoding="utf-8") as json_file:
         if initial_structure:
@@ -31,11 +32,11 @@ def read_json(file_name, position="", printing=False):
 
     def print_result(data):
         if printing:
-            print(json.dumps(data, indent=2))
+            print(json.dumps(data, indent=2, encoding="utf-8"))
         else:
             return
 
-    with open(file_name, "r") as json_file:
+    with open(file_name, "r", encoding="utf-8") as json_file:
         file_data = json.load(json_file)
         if position:
             data_pull = file_data[position]
@@ -47,23 +48,24 @@ def read_json(file_name, position="", printing=False):
 
 
 def append_data_json(position, data, file_name):
-    with open(file_name, "r") as json_file:
+    with open(file_name, "r", encoding="utf-8") as json_file:
         file_data = json.load(json_file)
 
     file_data[position].append(data)
 
-    with open(file_name, "w") as json_file:
+    with open(file_name, "w", encoding="utf-8") as json_file:
         json.dump(file_data, json_file, ensure_ascii=False, indent=4)
-    dropbox_upload.upload_password()
+    # dropbox_upload.upload_password()
 
 
 def update_dict(data, file_name):
-    with open(file_name, "r") as json_file:
+    with open(file_name, "r", encoding="utf-8") as json_file:
         file_data = json.load(json_file)
 
     file_data.update(data)
-    
-    with open(file_name, "w") as json_file:
+
+    with open(file_name, "w", encoding="utf-8") as json_file:
         json.dump(file_data, json_file, ensure_ascii=False, indent=4)
+    # dropbox_upload.upload_password()
 
 
